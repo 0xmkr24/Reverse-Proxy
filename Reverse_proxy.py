@@ -64,7 +64,7 @@ def redirect_to_backend(request,client_socket):
     
     # Create a new socket to connect to the target server
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.connect(("localhost", 8080))
+    server_socket.connect((TARGET_HOST, TARGET_PORT))
     
     # Forward the request to the target server
     server_socket.sendall(request)
