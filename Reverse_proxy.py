@@ -6,7 +6,7 @@ import select
 
 
 TARGET_HOST = '127.0.0.1'
-TARGET_PORT = 8080
+TARGET_PORT = 9090
 INVALID_REQUEST_HTML = '''
 <!DOCTYPE html>
 <html>
