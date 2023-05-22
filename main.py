@@ -16,9 +16,7 @@ if __name__ == '__main__':
         response = Reverse_proxy.handle_request(client_socket)
         request_lines = response.decode().split('\r\n')
         Reverse_proxy.redirect_to_backend(response,client_socket)
-        print(request_lines)
-        print(response)
-        
+
         # Extract Request Data
         method, headers, path, query_params, body_params = Reverse_proxy.Unpack_request(request_lines)
         print(method, headers, path, query_params, body_params)
