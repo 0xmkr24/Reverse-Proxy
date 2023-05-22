@@ -1,6 +1,5 @@
 import socket
 import Reverse_proxy
-# import checkIPRepuration
 
 if __name__ == '__main__':
     # Create a listening socket
@@ -19,9 +18,7 @@ if __name__ == '__main__':
         Reverse_proxy.redirect_to_backend(response,client_socket)
         print(request_lines)
         print(response)
-        print(method, headers, path, query_params, body_params)
+        
         # Extract Request Data
         method, headers, path, query_params, body_params = Reverse_proxy.Unpack_request(request_lines)
-
-
-        # Reverse_proxy.redirect_to_backend(client_socket)
+        print(method, headers, path, query_params, body_params)
