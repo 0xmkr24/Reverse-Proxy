@@ -61,30 +61,25 @@ def Unpack_request(request_lines):
 
 
 def redirect_to_backend(request,client_socket):
+    
     # Create a new socket to connect to the target server
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.connect(("localhost", 8080))
-
+    
     # Forward the request to the target server
     server_socket.sendall(request)
-
-    # Wait for a response from the target server
-
     while True:
         # Wait until the server socket is ready to be read
         ready_sockets, _, _ = select.select([server_socket], [], [], 1)
         if ready_sockets:
             # Read the response from the server
             response = server_socket.recv(4096)
-            # Extract headers and parameters from response
-            # Forward the response to the client
+
             client_socket.sendall(response)
             if not response:
-                # No more data from the server, so we're done
                 break
         else:
-            # The server socket didn't become ready within 1 second,
-            # so we assume that there's no more data to be read
+
             break
     # Close the sockets
     client_socket.close()
